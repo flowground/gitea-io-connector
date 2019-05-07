@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "index": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "since": {
+            "type": "string"
+        }
+    }
+}

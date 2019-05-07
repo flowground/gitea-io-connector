@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "index": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "MergePullRequestForm form for merging Pull Request",
+            "properties": {
+                "Do": {
+                    "enum": [
+                        "merge",
+                        "rebase",
+                        "rebase-merge",
+                        "squash"
+                    ],
+                    "type": "string"
+                },
+                "MergeMessageField": {
+                    "type": "string"
+                },
+                "MergeTitleField": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Do"
+            ],
+            "type": "object",
+            "x-go-name": "MergePullRequestForm",
+            "x-go-package": "code.gitea.io/gitea/modules/auth"
+        }
+    }
+}

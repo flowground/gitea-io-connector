@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "MarkdownOption markdown options",
+            "properties": {
+                "Context": {
+                    "description": "Context to render\n\nin: body",
+                    "type": "string"
+                },
+                "Mode": {
+                    "description": "Mode to render\n\nin: body",
+                    "type": "string"
+                },
+                "Text": {
+                    "description": "Text markdown to render\n\nin: body",
+                    "type": "string"
+                },
+                "Wiki": {
+                    "description": "Is it a wiki page ?\n\nin: body",
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

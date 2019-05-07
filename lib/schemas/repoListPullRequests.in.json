@@ -1,0 +1,46 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "page": {
+            "type": "integer"
+        },
+        "state": {
+            "type": "string",
+            "enum": [
+                "closed",
+                "open",
+                "all"
+            ]
+        },
+        "sort": {
+            "type": "string",
+            "enum": [
+                "oldest",
+                "recentupdate",
+                "leastupdate",
+                "mostcomment",
+                "leastcomment",
+                "priority"
+            ]
+        },
+        "milestone": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "labels": {
+            "type": "array",
+            "items": {
+                "format": "int64",
+                "type": "integer"
+            }
+        }
+    }
+}

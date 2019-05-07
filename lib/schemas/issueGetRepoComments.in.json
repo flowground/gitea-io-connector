@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "since": {
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "org": {
+            "required": true,
+            "type": "string"
+        },
+        "username": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

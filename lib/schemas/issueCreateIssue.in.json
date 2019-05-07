@@ -1,0 +1,67 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "CreateIssueOption options to create one issue",
+            "properties": {
+                "assignee": {
+                    "description": "username of assignee",
+                    "type": "string",
+                    "x-go-name": "Assignee"
+                },
+                "assignees": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "x-go-name": "Assignees"
+                },
+                "body": {
+                    "type": "string",
+                    "x-go-name": "Body"
+                },
+                "closed": {
+                    "type": "boolean",
+                    "x-go-name": "Closed"
+                },
+                "due_date": {
+                    "format": "date-time",
+                    "type": "string",
+                    "x-go-name": "Deadline"
+                },
+                "labels": {
+                    "description": "list of label ids",
+                    "items": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "type": "array",
+                    "x-go-name": "Labels"
+                },
+                "milestone": {
+                    "description": "milestone id",
+                    "format": "int64",
+                    "type": "integer",
+                    "x-go-name": "Milestone"
+                },
+                "title": {
+                    "type": "string",
+                    "x-go-name": "Title"
+                }
+            },
+            "required": [
+                "title"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

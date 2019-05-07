@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "org": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "CreateHookOption options when create a hook",
+            "properties": {
+                "active": {
+                    "default": false,
+                    "type": "boolean",
+                    "x-go-name": "Active"
+                },
+                "config": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "x-go-name": "Config"
+                },
+                "events": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "x-go-name": "Events"
+                },
+                "type": {
+                    "enum": [
+                        "gitea",
+                        "gogs",
+                        "slack",
+                        "discord"
+                    ],
+                    "type": "string",
+                    "x-go-name": "Type"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

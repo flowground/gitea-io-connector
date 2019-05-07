@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "follower": {
+            "required": true,
+            "type": "string"
+        },
+        "followee": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

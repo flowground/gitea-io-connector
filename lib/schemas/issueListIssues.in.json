@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "state": {
+            "type": "string"
+        },
+        "labels": {
+            "type": "string"
+        },
+        "page": {
+            "type": "integer"
+        },
+        "q": {
+            "type": "string"
+        }
+    }
+}

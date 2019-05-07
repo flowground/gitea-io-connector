@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "collaborator": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "AddCollaboratorOption options when adding a user as a collaborator of a repository",
+            "properties": {
+                "permission": {
+                    "type": "string",
+                    "x-go-name": "Permission"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

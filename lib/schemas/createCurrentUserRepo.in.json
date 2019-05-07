@@ -1,0 +1,51 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "CreateRepoOption options when creating repository",
+            "properties": {
+                "auto_init": {
+                    "description": "Whether the repository should be auto-intialized?",
+                    "type": "boolean",
+                    "x-go-name": "AutoInit"
+                },
+                "description": {
+                    "description": "Description of the repository to create",
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "gitignores": {
+                    "description": "Gitignores to use",
+                    "type": "string",
+                    "x-go-name": "Gitignores"
+                },
+                "license": {
+                    "description": "License to use",
+                    "type": "string",
+                    "x-go-name": "License"
+                },
+                "name": {
+                    "description": "Name of the repository to create",
+                    "type": "string",
+                    "uniqueItems": true,
+                    "x-go-name": "Name"
+                },
+                "private": {
+                    "description": "Whether the repository is private",
+                    "type": "boolean",
+                    "x-go-name": "Private"
+                },
+                "readme": {
+                    "description": "Readme of the repository to create",
+                    "type": "string",
+                    "x-go-name": "Readme"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

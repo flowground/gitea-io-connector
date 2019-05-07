@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "CreateEmailOption options when creating email addresses",
+            "properties": {
+                "emails": {
+                    "description": "email addresses to add",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "x-go-name": "Emails"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

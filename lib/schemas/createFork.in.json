@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "CreateForkOption options for creating a fork",
+            "properties": {
+                "organization": {
+                    "description": "organization name, if forking into an organization",
+                    "type": "string",
+                    "x-go-name": "Organization"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

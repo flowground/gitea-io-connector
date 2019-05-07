@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "EditReleaseOption options when editing a release",
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "x-go-name": "Note"
+                },
+                "draft": {
+                    "type": "boolean",
+                    "x-go-name": "IsDraft"
+                },
+                "name": {
+                    "type": "string",
+                    "x-go-name": "Title"
+                },
+                "prerelease": {
+                    "type": "boolean",
+                    "x-go-name": "IsPrerelease"
+                },
+                "tag_name": {
+                    "type": "string",
+                    "x-go-name": "TagName"
+                },
+                "target_commitish": {
+                    "type": "string",
+                    "x-go-name": "Target"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

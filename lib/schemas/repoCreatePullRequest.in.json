@@ -1,0 +1,65 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "CreatePullRequestOption options when creating a pull request",
+            "properties": {
+                "assignee": {
+                    "type": "string",
+                    "x-go-name": "Assignee"
+                },
+                "assignees": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "x-go-name": "Assignees"
+                },
+                "base": {
+                    "type": "string",
+                    "x-go-name": "Base"
+                },
+                "body": {
+                    "type": "string",
+                    "x-go-name": "Body"
+                },
+                "due_date": {
+                    "format": "date-time",
+                    "type": "string",
+                    "x-go-name": "Deadline"
+                },
+                "head": {
+                    "type": "string",
+                    "x-go-name": "Head"
+                },
+                "labels": {
+                    "items": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "type": "array",
+                    "x-go-name": "Labels"
+                },
+                "milestone": {
+                    "format": "int64",
+                    "type": "integer",
+                    "x-go-name": "Milestone"
+                },
+                "title": {
+                    "type": "string",
+                    "x-go-name": "Title"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

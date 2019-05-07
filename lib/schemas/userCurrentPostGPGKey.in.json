@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "CreateGPGKeyOption options create user GPG key",
+            "properties": {
+                "armored_public_key": {
+                    "description": "An armored GPG key to add",
+                    "type": "string",
+                    "uniqueItems": true,
+                    "x-go-name": "ArmoredKey"
+                }
+            },
+            "required": [
+                "armored_public_key"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

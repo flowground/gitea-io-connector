@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "CreateOrgOption options for creating an organization",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "full_name": {
+                    "type": "string",
+                    "x-go-name": "FullName"
+                },
+                "location": {
+                    "type": "string",
+                    "x-go-name": "Location"
+                },
+                "username": {
+                    "type": "string",
+                    "x-go-name": "UserName"
+                },
+                "website": {
+                    "type": "string",
+                    "x-go-name": "Website"
+                }
+            },
+            "required": [
+                "username"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

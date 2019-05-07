@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "index": {
+            "required": true,
+            "type": "integer"
+        },
+        "id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "EditIssueCommentOption options for editing a comment",
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "x-go-name": "Body"
+                }
+            },
+            "required": [
+                "body"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

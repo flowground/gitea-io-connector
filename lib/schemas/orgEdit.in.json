@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "org": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "EditOrgOption options for editing an organization",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "full_name": {
+                    "type": "string",
+                    "x-go-name": "FullName"
+                },
+                "location": {
+                    "type": "string",
+                    "x-go-name": "Location"
+                },
+                "website": {
+                    "type": "string",
+                    "x-go-name": "Website"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

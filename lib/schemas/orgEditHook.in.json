@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "org": {
+            "required": true,
+            "type": "string"
+        },
+        "id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "EditHookOption options when modify one hook",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "x-go-name": "Active"
+                },
+                "config": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "x-go-name": "Config"
+                },
+                "events": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "x-go-name": "Events"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

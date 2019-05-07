@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "q": {
+            "type": "string"
+        },
+        "uid": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "page": {
+            "type": "integer"
+        },
+        "limit": {
+            "type": "integer"
+        },
+        "mode": {
+            "type": "string"
+        },
+        "exclusive": {
+            "type": "boolean"
+        },
+        "sort": {
+            "type": "string"
+        },
+        "order": {
+            "type": "string"
+        }
+    }
+}

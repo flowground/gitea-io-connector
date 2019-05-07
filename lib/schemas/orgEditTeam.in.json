@@ -1,0 +1,52 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "required": true,
+            "type": "integer"
+        },
+        "requestBody": {
+            "description": "EditTeamOption options for editing a team",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "name": {
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "permission": {
+                    "enum": [
+                        "read",
+                        "write",
+                        "admin"
+                    ],
+                    "type": "string",
+                    "x-go-name": "Permission"
+                },
+                "units": {
+                    "enum": [
+                        "repo.code",
+                        "repo.issues",
+                        "repo.ext_issues",
+                        "repo.wiki",
+                        "repo.pulls",
+                        "repo.releases",
+                        "repo.ext_wiki"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "x-go-name": "Units"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

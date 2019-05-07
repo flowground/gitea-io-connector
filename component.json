@@ -1,0 +1,3310 @@
+{
+    "title": "Gitea API.",
+    "description": "This documentation describes the Gitea API.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/gitea.io/1.1.1/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://try.gitea.io/api/v1",
+                    "https://try.gitea.io/api/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "AccessToken": {
+                "label": "access_token (AccessToken)",
+                "viewClass": "TextFieldView"
+            },
+            "AuthorizationHeaderToken": {
+                "label": "Authorization (AuthorizationHeaderToken)",
+                "viewClass": "TextFieldView"
+            },
+            "username": {
+                "label": "Username (BasicAuth)",
+                "viewClass": "TextFieldView"
+            },
+            "password": {
+                "label": "Password (BasicAuth)",
+                "viewClass": "TextFieldView"
+            },
+            "SudoHeader": {
+                "label": "Sudo (SudoHeader)",
+                "viewClass": "TextFieldView",
+                "note": "Sudo API request as the user provided as the key. Admin privileges are required."
+            },
+            "SudoParam": {
+                "label": "sudo (SudoParam)",
+                "viewClass": "TextFieldView",
+                "note": "Sudo API request as the user provided as the key. Admin privileges are required."
+            },
+            "Token": {
+                "label": "token (Token)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "adminGetAllOrgs": {
+            "main": "./lib/actions/adminGetAllOrgs.js",
+            "title": "List all organizations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminGetAllOrgs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adminGetAllUsers": {
+            "main": "./lib/actions/adminGetAllUsers.js",
+            "title": "List all users",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminGetAllUsers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adminCreateUser": {
+            "main": "./lib/actions/adminCreateUser.js",
+            "title": "Create a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminCreateUser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adminDeleteUser": {
+            "main": "./lib/actions/adminDeleteUser.js",
+            "title": "Delete a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminDeleteUser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adminEditUser": {
+            "main": "./lib/actions/adminEditUser.js",
+            "title": "Edit an existing user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminEditUser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adminCreatePublicKey": {
+            "main": "./lib/actions/adminCreatePublicKey.js",
+            "title": "Add a public key on behalf of a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminCreatePublicKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adminDeleteUserPublicKey": {
+            "main": "./lib/actions/adminDeleteUserPublicKey.js",
+            "title": "Delete a user's public key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminDeleteUserPublicKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adminCreateOrg": {
+            "main": "./lib/actions/adminCreateOrg.js",
+            "title": "Create an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminCreateOrg.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adminCreateRepo": {
+            "main": "./lib/actions/adminCreateRepo.js",
+            "title": "Create a repository on behalf a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adminCreateRepo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "renderMarkdown": {
+            "main": "./lib/actions/renderMarkdown.js",
+            "title": "Render a markdown document as HTML",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/renderMarkdown.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "renderMarkdownRaw": {
+            "main": "./lib/actions/renderMarkdownRaw.js",
+            "title": "Render raw markdown as HTML",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "text/plain": "text/plain",
+                        "application/json": "application/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/renderMarkdownRaw.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createOrgRepo": {
+            "main": "./lib/actions/createOrgRepo.js",
+            "title": "Create a repository in an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createOrgRepo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgCreate": {
+            "main": "./lib/actions/orgCreate.js",
+            "title": "Create an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgCreate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgDelete": {
+            "main": "./lib/actions/orgDelete.js",
+            "title": "Delete an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgDelete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgGet": {
+            "main": "./lib/actions/orgGet.js",
+            "title": "Get an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgEdit": {
+            "main": "./lib/actions/orgEdit.js",
+            "title": "Edit an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgEdit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListHooks": {
+            "main": "./lib/actions/orgListHooks.js",
+            "title": "List an organization's webhooks",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListHooks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgCreateHook": {
+            "main": "./lib/actions/orgCreateHook.js",
+            "title": "Create a hook",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgCreateHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgDeleteHook": {
+            "main": "./lib/actions/orgDeleteHook.js",
+            "title": "Delete a hook",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgDeleteHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgGetHook": {
+            "main": "./lib/actions/orgGetHook.js",
+            "title": "Get a hook",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgGetHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgEditHook": {
+            "main": "./lib/actions/orgEditHook.js",
+            "title": "Update a hook",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgEditHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListMembers": {
+            "main": "./lib/actions/orgListMembers.js",
+            "title": "List an organization's members",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListMembers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgDeleteMember": {
+            "main": "./lib/actions/orgDeleteMember.js",
+            "title": "Remove a member from an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgDeleteMember.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgIsMember": {
+            "main": "./lib/actions/orgIsMember.js",
+            "title": "Check if a user is a member of an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgIsMember.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListPublicMembers": {
+            "main": "./lib/actions/orgListPublicMembers.js",
+            "title": "List an organization's public members",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListPublicMembers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgConcealMember": {
+            "main": "./lib/actions/orgConcealMember.js",
+            "title": "Conceal a user's membership",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgConcealMember.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgIsPublicMember": {
+            "main": "./lib/actions/orgIsPublicMember.js",
+            "title": "Check if a user is a public member of an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgIsPublicMember.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgPublicizeMember": {
+            "main": "./lib/actions/orgPublicizeMember.js",
+            "title": "Publicize a user's membership",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgPublicizeMember.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListRepos": {
+            "main": "./lib/actions/orgListRepos.js",
+            "title": "List an organization's repos",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListRepos.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListTeams": {
+            "main": "./lib/actions/orgListTeams.js",
+            "title": "List an organization's teams",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListTeams.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgCreateTeam": {
+            "main": "./lib/actions/orgCreateTeam.js",
+            "title": "Create a team",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgCreateTeam.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoMigrate": {
+            "main": "./lib/actions/repoMigrate.js",
+            "title": "Migrate a remote git repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoMigrate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoSearch": {
+            "main": "./lib/actions/repoSearch.js",
+            "title": "Search for repositories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoSearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoDelete": {
+            "main": "./lib/actions/repoDelete.js",
+            "title": "Delete a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoDelete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGet": {
+            "main": "./lib/actions/repoGet.js",
+            "title": "Get a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetArchive": {
+            "main": "./lib/actions/repoGetArchive.js",
+            "title": "Get an archive of a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetArchive.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListBranches": {
+            "main": "./lib/actions/repoListBranches.js",
+            "title": "List a repository's branches",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListBranches.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetBranch": {
+            "main": "./lib/actions/repoGetBranch.js",
+            "title": "Retrieve a specific branch from a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetBranch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListCollaborators": {
+            "main": "./lib/actions/repoListCollaborators.js",
+            "title": "List a repository's collaborators",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListCollaborators.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoDeleteCollaborator": {
+            "main": "./lib/actions/repoDeleteCollaborator.js",
+            "title": "Delete a collaborator from a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoDeleteCollaborator.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoCheckCollaborator": {
+            "main": "./lib/actions/repoCheckCollaborator.js",
+            "title": "Check if a user is a collaborator of a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoCheckCollaborator.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoAddCollaborator": {
+            "main": "./lib/actions/repoAddCollaborator.js",
+            "title": "Add a collaborator to a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoAddCollaborator.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetCombinedStatusByRef": {
+            "main": "./lib/actions/repoGetCombinedStatusByRef.js",
+            "title": "Get a commit's combined status, by branch/tag/commit reference",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetCombinedStatusByRef.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetEditorConfig": {
+            "main": "./lib/actions/repoGetEditorConfig.js",
+            "title": "Get the EditorConfig definitions of a file in a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetEditorConfig.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "listForks": {
+            "main": "./lib/actions/listForks.js",
+            "title": "List a repository's forks",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/listForks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createFork": {
+            "main": "./lib/actions/createFork.js",
+            "title": "Fork a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createFork.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetSingleCommit": {
+            "main": "./lib/actions/repoGetSingleCommit.js",
+            "title": "Get a single commit from a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetSingleCommit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListAllGitRefs": {
+            "main": "./lib/actions/repoListAllGitRefs.js",
+            "title": "Get specified ref or filtered repository's refs",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListAllGitRefs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListGitRefs": {
+            "main": "./lib/actions/repoListGitRefs.js",
+            "title": "Get specified ref or filtered repository's refs",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListGitRefs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetTree": {
+            "main": "./lib/actions/GetTree.js",
+            "title": "Gets the tree of a repository.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetTree.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListHooks": {
+            "main": "./lib/actions/repoListHooks.js",
+            "title": "List the hooks in a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListHooks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoCreateHook": {
+            "main": "./lib/actions/repoCreateHook.js",
+            "title": "Create a hook",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoCreateHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoDeleteHook": {
+            "main": "./lib/actions/repoDeleteHook.js",
+            "title": "Delete a hook in a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoDeleteHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetHook": {
+            "main": "./lib/actions/repoGetHook.js",
+            "title": "Get a hook",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoEditHook": {
+            "main": "./lib/actions/repoEditHook.js",
+            "title": "Edit a hook in a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoEditHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoTestHook": {
+            "main": "./lib/actions/repoTestHook.js",
+            "title": "Test a push webhook",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoTestHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueListIssues": {
+            "main": "./lib/actions/issueListIssues.js",
+            "title": "List a repository's issues",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueListIssues.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueCreateIssue": {
+            "main": "./lib/actions/issueCreateIssue.js",
+            "title": "Create an issue. If using deadline only the date will be taken into account, and time of day ignored.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueCreateIssue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueGetRepoComments": {
+            "main": "./lib/actions/issueGetRepoComments.js",
+            "title": "List all comments in a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueGetRepoComments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueDeleteComment": {
+            "main": "./lib/actions/issueDeleteComment.js",
+            "title": "Delete a comment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueDeleteComment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueEditComment": {
+            "main": "./lib/actions/issueEditComment.js",
+            "title": "Edit a comment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueEditComment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueTrackedTimes": {
+            "main": "./lib/actions/issueTrackedTimes.js",
+            "title": "List an issue's tracked times",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueTrackedTimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueAddTime": {
+            "main": "./lib/actions/issueAddTime.js",
+            "title": "Add a tracked time to a issue",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueAddTime.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueGetIssue": {
+            "main": "./lib/actions/issueGetIssue.js",
+            "title": "Get an issue",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueGetIssue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueEditIssue": {
+            "main": "./lib/actions/issueEditIssue.js",
+            "title": "Edit an issue. If using deadline only the date will be taken into account, and time of day ignored.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueEditIssue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueGetComments": {
+            "main": "./lib/actions/issueGetComments.js",
+            "title": "List all comments on an issue",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueGetComments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueCreateComment": {
+            "main": "./lib/actions/issueCreateComment.js",
+            "title": "Add a comment to an issue",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueCreateComment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueDeleteCommentDeprecated": {
+            "main": "./lib/actions/issueDeleteCommentDeprecated.js",
+            "title": "Delete a comment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueDeleteCommentDeprecated.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueEditCommentDeprecated": {
+            "main": "./lib/actions/issueEditCommentDeprecated.js",
+            "title": "Edit a comment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueEditCommentDeprecated.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueEditIssueDeadline": {
+            "main": "./lib/actions/issueEditIssueDeadline.js",
+            "title": "Set an issue deadline. If set to null, the deadline is deleted. If using deadline only the date will be taken into account, and time of day ignored.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueEditIssueDeadline.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueClearLabels": {
+            "main": "./lib/actions/issueClearLabels.js",
+            "title": "Remove all labels from an issue",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueClearLabels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueGetLabels": {
+            "main": "./lib/actions/issueGetLabels.js",
+            "title": "Get an issue's labels",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueGetLabels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueAddLabel": {
+            "main": "./lib/actions/issueAddLabel.js",
+            "title": "Add a label to an issue",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueAddLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueReplaceLabels": {
+            "main": "./lib/actions/issueReplaceLabels.js",
+            "title": "Replace an issue's labels",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueReplaceLabels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueRemoveLabel": {
+            "main": "./lib/actions/issueRemoveLabel.js",
+            "title": "Remove a label from an issue",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueRemoveLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueStartStopWatch": {
+            "main": "./lib/actions/issueStartStopWatch.js",
+            "title": "Start stopwatch on an issue.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueStartStopWatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueStopWatch": {
+            "main": "./lib/actions/issueStopWatch.js",
+            "title": "Stop an issue's existing stopwatch.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueStopWatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListKeys": {
+            "main": "./lib/actions/repoListKeys.js",
+            "title": "List a repository's keys",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoCreateKey": {
+            "main": "./lib/actions/repoCreateKey.js",
+            "title": "Add a key to a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoCreateKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoDeleteKey": {
+            "main": "./lib/actions/repoDeleteKey.js",
+            "title": "Delete a key from a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoDeleteKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetKey": {
+            "main": "./lib/actions/repoGetKey.js",
+            "title": "Get a repository's key by id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueListLabels": {
+            "main": "./lib/actions/issueListLabels.js",
+            "title": "Get all of a repository's labels",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueListLabels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueCreateLabel": {
+            "main": "./lib/actions/issueCreateLabel.js",
+            "title": "Create a label",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueCreateLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueDeleteLabel": {
+            "main": "./lib/actions/issueDeleteLabel.js",
+            "title": "Delete a label",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueDeleteLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueGetLabel": {
+            "main": "./lib/actions/issueGetLabel.js",
+            "title": "Get a single label",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueGetLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueEditLabel": {
+            "main": "./lib/actions/issueEditLabel.js",
+            "title": "Update a label",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueEditLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueGetMilestonesList": {
+            "main": "./lib/actions/issueGetMilestonesList.js",
+            "title": "Get all of a repository's opened milestones",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueGetMilestonesList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueCreateMilestone": {
+            "main": "./lib/actions/issueCreateMilestone.js",
+            "title": "Create a milestone",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueCreateMilestone.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueDeleteMilestone": {
+            "main": "./lib/actions/issueDeleteMilestone.js",
+            "title": "Delete a milestone",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueDeleteMilestone.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueGetMilestone": {
+            "main": "./lib/actions/issueGetMilestone.js",
+            "title": "Get a milestone",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueGetMilestone.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueEditMilestone": {
+            "main": "./lib/actions/issueEditMilestone.js",
+            "title": "Update a milestone",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueEditMilestone.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoMirrorSync": {
+            "main": "./lib/actions/repoMirrorSync.js",
+            "title": "Sync a mirrored repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoMirrorSync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListPullRequests": {
+            "main": "./lib/actions/repoListPullRequests.js",
+            "title": "List a repo's pull requests",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListPullRequests.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoCreatePullRequest": {
+            "main": "./lib/actions/repoCreatePullRequest.js",
+            "title": "Create a pull request",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoCreatePullRequest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetPullRequest": {
+            "main": "./lib/actions/repoGetPullRequest.js",
+            "title": "Get a pull request",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetPullRequest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoEditPullRequest": {
+            "main": "./lib/actions/repoEditPullRequest.js",
+            "title": "Update a pull request",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoEditPullRequest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoPullRequestIsMerged": {
+            "main": "./lib/actions/repoPullRequestIsMerged.js",
+            "title": "Check if a pull request has been merged",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoPullRequestIsMerged.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoMergePullRequest": {
+            "main": "./lib/actions/repoMergePullRequest.js",
+            "title": "Merge a pull request",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoMergePullRequest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetRawFile": {
+            "main": "./lib/actions/repoGetRawFile.js",
+            "title": "Get a file from a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetRawFile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListReleases": {
+            "main": "./lib/actions/repoListReleases.js",
+            "title": "List a repo's releases",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListReleases.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoCreateRelease": {
+            "main": "./lib/actions/repoCreateRelease.js",
+            "title": "Create a release",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoCreateRelease.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoDeleteRelease": {
+            "main": "./lib/actions/repoDeleteRelease.js",
+            "title": "Delete a release",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoDeleteRelease.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetRelease": {
+            "main": "./lib/actions/repoGetRelease.js",
+            "title": "Get a release",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetRelease.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoEditRelease": {
+            "main": "./lib/actions/repoEditRelease.js",
+            "title": "Update a release",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoEditRelease.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListReleaseAttachments": {
+            "main": "./lib/actions/repoListReleaseAttachments.js",
+            "title": "List release's attachments",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListReleaseAttachments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoCreateReleaseAttachment": {
+            "main": "./lib/actions/repoCreateReleaseAttachment.js",
+            "title": "Create a release attachment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoCreateReleaseAttachment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoDeleteReleaseAttachment": {
+            "main": "./lib/actions/repoDeleteReleaseAttachment.js",
+            "title": "Delete a release attachment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoDeleteReleaseAttachment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetReleaseAttachment": {
+            "main": "./lib/actions/repoGetReleaseAttachment.js",
+            "title": "Get a release attachment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetReleaseAttachment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoEditReleaseAttachment": {
+            "main": "./lib/actions/repoEditReleaseAttachment.js",
+            "title": "Edit a release attachment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoEditReleaseAttachment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListStargazers": {
+            "main": "./lib/actions/repoListStargazers.js",
+            "title": "List a repo's stargazers",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListStargazers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListStatuses": {
+            "main": "./lib/actions/repoListStatuses.js",
+            "title": "Get a commit's statuses",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListStatuses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoCreateStatus": {
+            "main": "./lib/actions/repoCreateStatus.js",
+            "title": "Create a commit status",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoCreateStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListSubscribers": {
+            "main": "./lib/actions/repoListSubscribers.js",
+            "title": "List a repo's watchers",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListSubscribers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentDeleteSubscription": {
+            "main": "./lib/actions/userCurrentDeleteSubscription.js",
+            "title": "Unwatch a repo",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentDeleteSubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentCheckSubscription": {
+            "main": "./lib/actions/userCurrentCheckSubscription.js",
+            "title": "Check if the current user is watching a repo",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentCheckSubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentPutSubscription": {
+            "main": "./lib/actions/userCurrentPutSubscription.js",
+            "title": "Watch a repo",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentPutSubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoListTags": {
+            "main": "./lib/actions/repoListTags.js",
+            "title": "List a repository's tags",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoListTags.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoTrackedTimes": {
+            "main": "./lib/actions/repoTrackedTimes.js",
+            "title": "List a repo's tracked times",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoTrackedTimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userTrackedTimes": {
+            "main": "./lib/actions/userTrackedTimes.js",
+            "title": "List a user's tracked times in a repo",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userTrackedTimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "repoGetByID": {
+            "main": "./lib/actions/repoGetByID.js",
+            "title": "Get a repository by id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/repoGetByID.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgDeleteTeam": {
+            "main": "./lib/actions/orgDeleteTeam.js",
+            "title": "Delete a team",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgDeleteTeam.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgGetTeam": {
+            "main": "./lib/actions/orgGetTeam.js",
+            "title": "Get a team",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgGetTeam.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgEditTeam": {
+            "main": "./lib/actions/orgEditTeam.js",
+            "title": "Edit a team",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgEditTeam.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListTeamMembers": {
+            "main": "./lib/actions/orgListTeamMembers.js",
+            "title": "List a team's members",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListTeamMembers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgRemoveTeamMember": {
+            "main": "./lib/actions/orgRemoveTeamMember.js",
+            "title": "Remove a team member",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgRemoveTeamMember.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListTeamMember": {
+            "main": "./lib/actions/orgListTeamMember.js",
+            "title": "List a particular member of team",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListTeamMember.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgAddTeamMember": {
+            "main": "./lib/actions/orgAddTeamMember.js",
+            "title": "Add a team member",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgAddTeamMember.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListTeamRepos": {
+            "main": "./lib/actions/orgListTeamRepos.js",
+            "title": "List a team's repos",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListTeamRepos.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgRemoveTeamRepository": {
+            "main": "./lib/actions/orgRemoveTeamRepository.js",
+            "title": "Remove a repository from a team",
+            "description": "This does not delete the repository, it only removes the repository from the team.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgRemoveTeamRepository.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgAddTeamRepository": {
+            "main": "./lib/actions/orgAddTeamRepository.js",
+            "title": "Add a repository to a team",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgAddTeamRepository.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "topicSearch": {
+            "main": "./lib/actions/topicSearch.js",
+            "title": "search topics via keyword",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/topicSearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userGetCurrent": {
+            "main": "./lib/actions/userGetCurrent.js",
+            "title": "Get the authenticated user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userGetCurrent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userDeleteEmail": {
+            "main": "./lib/actions/userDeleteEmail.js",
+            "title": "Delete email addresses",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userDeleteEmail.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListEmails": {
+            "main": "./lib/actions/userListEmails.js",
+            "title": "List the authenticated user's email addresses",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListEmails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userAddEmail": {
+            "main": "./lib/actions/userAddEmail.js",
+            "title": "Add email addresses",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userAddEmail.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentListFollowers": {
+            "main": "./lib/actions/userCurrentListFollowers.js",
+            "title": "List the authenticated user's followers",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentListFollowers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentListFollowing": {
+            "main": "./lib/actions/userCurrentListFollowing.js",
+            "title": "List the users that the authenticated user is following",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentListFollowing.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentDeleteFollow": {
+            "main": "./lib/actions/userCurrentDeleteFollow.js",
+            "title": "Unfollow a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentDeleteFollow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentCheckFollowing": {
+            "main": "./lib/actions/userCurrentCheckFollowing.js",
+            "title": "Check whether a user is followed by the authenticated user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentCheckFollowing.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentPutFollow": {
+            "main": "./lib/actions/userCurrentPutFollow.js",
+            "title": "Follow a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentPutFollow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentListGPGKeys": {
+            "main": "./lib/actions/userCurrentListGPGKeys.js",
+            "title": "List the authenticated user's GPG keys",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentListGPGKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentPostGPGKey": {
+            "main": "./lib/actions/userCurrentPostGPGKey.js",
+            "title": "Create a GPG key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentPostGPGKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentDeleteGPGKey": {
+            "main": "./lib/actions/userCurrentDeleteGPGKey.js",
+            "title": "Remove a GPG key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentDeleteGPGKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentGetGPGKey": {
+            "main": "./lib/actions/userCurrentGetGPGKey.js",
+            "title": "Get a GPG key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentGetGPGKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentListKeys": {
+            "main": "./lib/actions/userCurrentListKeys.js",
+            "title": "List the authenticated user's public keys",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentListKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentPostKey": {
+            "main": "./lib/actions/userCurrentPostKey.js",
+            "title": "Create a public key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentPostKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentDeleteKey": {
+            "main": "./lib/actions/userCurrentDeleteKey.js",
+            "title": "Delete a public key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentDeleteKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentGetKey": {
+            "main": "./lib/actions/userCurrentGetKey.js",
+            "title": "Get a public key",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentGetKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListCurrentUserOrgs": {
+            "main": "./lib/actions/orgListCurrentUserOrgs.js",
+            "title": "List the current user's organizations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListCurrentUserOrgs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentListRepos": {
+            "main": "./lib/actions/userCurrentListRepos.js",
+            "title": "List the repos that the authenticated user owns or has access to",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentListRepos.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createCurrentUserRepo": {
+            "main": "./lib/actions/createCurrentUserRepo.js",
+            "title": "Create a repository",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createCurrentUserRepo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentListStarred": {
+            "main": "./lib/actions/userCurrentListStarred.js",
+            "title": "The repos that the authenticated user has starred",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentListStarred.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentDeleteStar": {
+            "main": "./lib/actions/userCurrentDeleteStar.js",
+            "title": "Unstar the given repo",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentDeleteStar.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentCheckStarring": {
+            "main": "./lib/actions/userCurrentCheckStarring.js",
+            "title": "Whether the authenticated is starring the repo",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentCheckStarring.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentPutStar": {
+            "main": "./lib/actions/userCurrentPutStar.js",
+            "title": "Star the given repo",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentPutStar.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentListSubscriptions": {
+            "main": "./lib/actions/userCurrentListSubscriptions.js",
+            "title": "List repositories watched by the authenticated user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentListSubscriptions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListTeams": {
+            "main": "./lib/actions/userListTeams.js",
+            "title": "List all the teams a user belongs to",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListTeams.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCurrentTrackedTimes": {
+            "main": "./lib/actions/userCurrentTrackedTimes.js",
+            "title": "List the current user's tracked times",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCurrentTrackedTimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userSearch": {
+            "main": "./lib/actions/userSearch.js",
+            "title": "Search for users",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userSearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCheckFollowing": {
+            "main": "./lib/actions/userCheckFollowing.js",
+            "title": "Check if one user is following another user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCheckFollowing.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userGet": {
+            "main": "./lib/actions/userGet.js",
+            "title": "Get a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListFollowers": {
+            "main": "./lib/actions/userListFollowers.js",
+            "title": "List the given user's followers",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListFollowers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListFollowing": {
+            "main": "./lib/actions/userListFollowing.js",
+            "title": "List the users that the given user is following",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListFollowing.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListGPGKeys": {
+            "main": "./lib/actions/userListGPGKeys.js",
+            "title": "List the given user's GPG keys",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListGPGKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userGetHeatmapData": {
+            "main": "./lib/actions/userGetHeatmapData.js",
+            "title": "Get a user's heatmap",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userGetHeatmapData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListKeys": {
+            "main": "./lib/actions/userListKeys.js",
+            "title": "List the given user's public keys",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "orgListUserOrgs": {
+            "main": "./lib/actions/orgListUserOrgs.js",
+            "title": "List a user's organizations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/orgListUserOrgs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListRepos": {
+            "main": "./lib/actions/userListRepos.js",
+            "title": "List the repos owned by the given user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListRepos.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListStarred": {
+            "main": "./lib/actions/userListStarred.js",
+            "title": "The repos that the given user has starred",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListStarred.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userListSubscriptions": {
+            "main": "./lib/actions/userListSubscriptions.js",
+            "title": "List the repositories watched by a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userListSubscriptions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userGetTokens": {
+            "main": "./lib/actions/userGetTokens.js",
+            "title": "List the authenticated user's access tokens",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userGetTokens.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userCreateToken": {
+            "main": "./lib/actions/userCreateToken.js",
+            "title": "Create an access token",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userCreateToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userDeleteAccessToken": {
+            "main": "./lib/actions/userDeleteAccessToken.js",
+            "title": "delete an access token",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userDeleteAccessToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getVersion": {
+            "main": "./lib/actions/getVersion.js",
+            "title": "Returns the version of the Gitea application",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getVersion.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

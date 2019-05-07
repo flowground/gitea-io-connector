@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "username": {
+            "required": true,
+            "type": "string"
+        },
+        "token": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "CreateUserOption create user options",
+            "properties": {
+                "email": {
+                    "format": "email",
+                    "type": "string",
+                    "x-go-name": "Email"
+                },
+                "full_name": {
+                    "type": "string",
+                    "x-go-name": "FullName"
+                },
+                "login_name": {
+                    "type": "string",
+                    "x-go-name": "LoginName"
+                },
+                "must_change_password": {
+                    "type": "boolean",
+                    "x-go-name": "MustChangePassword"
+                },
+                "password": {
+                    "type": "string",
+                    "x-go-name": "Password"
+                },
+                "send_notify": {
+                    "type": "boolean",
+                    "x-go-name": "SendNotify"
+                },
+                "source_id": {
+                    "format": "int64",
+                    "type": "integer",
+                    "x-go-name": "SourceID"
+                },
+                "username": {
+                    "type": "string",
+                    "x-go-name": "Username"
+                }
+            },
+            "required": [
+                "username",
+                "email",
+                "password"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

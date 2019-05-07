@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "sha": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "CreateStatusOption holds the information needed to create a new Status for a Commit",
+            "properties": {
+                "context": {
+                    "type": "string",
+                    "x-go-name": "Context"
+                },
+                "description": {
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "state": {
+                    "description": "StatusState holds the state of a Status\nIt can be \"pending\", \"success\", \"error\", \"failure\", and \"warning\"",
+                    "type": "string",
+                    "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+                },
+                "target_url": {
+                    "type": "string",
+                    "x-go-name": "TargetURL"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

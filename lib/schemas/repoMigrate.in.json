@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "MigrateRepoForm form for migrating repository",
+            "properties": {
+                "auth_password": {
+                    "type": "string",
+                    "x-go-name": "AuthPassword"
+                },
+                "auth_username": {
+                    "type": "string",
+                    "x-go-name": "AuthUsername"
+                },
+                "clone_addr": {
+                    "type": "string",
+                    "x-go-name": "CloneAddr"
+                },
+                "description": {
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "mirror": {
+                    "type": "boolean",
+                    "x-go-name": "Mirror"
+                },
+                "private": {
+                    "type": "boolean",
+                    "x-go-name": "Private"
+                },
+                "repo_name": {
+                    "type": "string",
+                    "x-go-name": "RepoName"
+                },
+                "uid": {
+                    "format": "int64",
+                    "type": "integer",
+                    "x-go-name": "UID"
+                }
+            },
+            "required": [
+                "clone_addr",
+                "uid",
+                "repo_name"
+            ],
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/modules/auth"
+        }
+    }
+}

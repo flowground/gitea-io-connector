@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "CreateMilestoneOption options for creating a milestone",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "due_on": {
+                    "format": "date-time",
+                    "type": "string",
+                    "x-go-name": "Deadline"
+                },
+                "title": {
+                    "type": "string",
+                    "x-go-name": "Title"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}

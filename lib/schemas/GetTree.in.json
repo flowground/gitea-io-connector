@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "sha": {
+            "required": true,
+            "type": "string"
+        },
+        "recursive": {
+            "type": "boolean"
+        },
+        "page": {
+            "type": "integer"
+        },
+        "per_page": {
+            "type": "integer"
+        }
+    }
+}

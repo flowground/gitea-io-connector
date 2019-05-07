@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "owner": {
+            "required": true,
+            "type": "string"
+        },
+        "repo": {
+            "required": true,
+            "type": "string"
+        },
+        "id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "EditLabelOption options for editing a label",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "x-go-name": "Color"
+                },
+                "name": {
+                    "type": "string",
+                    "x-go-name": "Name"
+                }
+            },
+            "type": "object",
+            "x-go-package": "code.gitea.io/gitea/vendor/code.gitea.io/sdk/gitea"
+        }
+    }
+}
